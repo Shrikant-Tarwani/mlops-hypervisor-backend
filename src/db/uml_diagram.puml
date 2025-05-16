@@ -1,0 +1,37 @@
+@startuml
+
+entity User {
+    +id: int
+    +username: string
+    +password_hash: string
+    +email: string
+}
+
+entity Organization {
+    +id: int
+    +name: string
+    +invite_code: string
+}
+
+entity Cluster {
+    +id: int
+    +name: string
+    +ram: int
+    +cpu: int
+    +gpu: int
+}
+
+entity Deployment {
+    +id: int
+    +docker_image: string
+    +ram_required: int
+    +cpu_required: int
+    +gpu_required: int
+    +priority: int
+}
+
+User -- Organization : "belongs to"
+Organization -- Cluster : "has"
+Cluster -- Deployment : "manages"
+
+@enduml
